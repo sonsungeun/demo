@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.8'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.2.2'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+	// implementation 'org.springframework.boot:spring-boot-devtools'
+	// implementation 'org.springframework.security:spring-security-core:6.2.1'
+	implementation 'org.opensaml:opensaml:2.6.4'
+	// implementation 'org.opensaml:opensaml-saml-api:4.0.1'
+	implementation 'org.springframework.security.extensions:spring-security-saml2-core:1.0.10.RELEASE'
+	implementation 'commons-codec:commons-codec:1.15' // Base64 encoding
+	implementation 'org.bouncycastle:bcprov-jdk15on:1.70'
+
+}
+
+
+
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
