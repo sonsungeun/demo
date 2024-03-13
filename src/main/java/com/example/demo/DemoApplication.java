@@ -121,8 +121,6 @@ import com.example.demo.SigningUtilForPem;
 @ComponentScan(basePackages = {"com.example.demo"})
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class DemoApplication {
-	// @Value("${sp.metadata.ACS}")
-	// private static String ACSEndpoint;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());	
 
@@ -581,7 +579,7 @@ public class DemoApplication {
 		SAMLObjectBuilder<NameID> nameIdBuilder = (SAMLObjectBuilder<NameID>)builderFactory.getBuilder(NameID.DEFAULT_ELEMENT_NAME);
 		NameID samlNameID = nameIdBuilder.buildObject();
 		samlNameID.setValue("HKIM"); // 실제 로그인 할 nameId값 설정
-		samlNameID.setFormat("urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified");
+		samlNameID.setFormat("urn:oasis:names:tc:SAML:2.0:nameid-format:persistent");
 		samlNameID.setNameQualifier("https://saml.sogang.ac.kr:8443");
 		samlNameID.setSPNameQualifier("https://fisco.authentication.jp10.hana.ondemand.com");
 		samlSubject.setNameID(samlNameID);
@@ -633,11 +631,6 @@ public class DemoApplication {
 		// 인증서를 담은 개인키 서명
 		signature.setSigningCredential(credential);
 
-		// 서명에 정규화방법, 서명 알고리즘 추가
-		signature.setCanonicalizationAlgorithm(SignatureConstants.ALGO_ID_C14N_EXCL_OMIT_COMMENTS);
-		signature.setSignatureAlgorithm(SignatureConstants.ALGO_ID_SIGNATURE_RSA_SHA256);
-
-
 		// 보안이슈로 modulus, exponent값 직접 설정은 권장되지 않음
 		// 공개키로 서명
 		// KeyValueBuilder keyValueBuilder = (KeyValueBuilder)builderFactory.getBuilder(KeyValue.DEFAULT_ELEMENT_NAME);
@@ -672,8 +665,8 @@ public class DemoApplication {
 		X509Certificate x509Certificate = x509CertificateBuilder.buildObject();
 		try {
 			BasicX509Credential certifi = pem.getX509CredentialForResponse();
-			x509Certificate.setValue(Base64.encodeBytes(certifi.getEntityCertificate().getEncoded(),Base64.DONT_BREAK_LINES));
-			// x509Certificate.setValue(Base64.encodeBytes(certifi.getEntityCertificate().getEncoded()));
+			// x509Certificate.setValue(Base64.encodeBytes(certifi.getEntityCertificate().getEncoded(),Base64.DONT_BREAK_LINES));
+			x509Certificate.setValue(Base64.encodeBytes(certifi.getEntityCertificate().getEncoded()));
 			System.out.println("BasicX509 ParsedCertificate================\n"+java.util.Base64.getEncoder().encodeToString(certifi.getEntityCertificate().getEncoded()));
 		} catch (CertificateEncodingException e) {
 			// TODO Auto-generated catch block
@@ -689,8 +682,8 @@ public class DemoApplication {
 
 
 		//서명에 정규화방법, 서명 알고리즘 추가
-		signature.setCanonicalizationAlgorithm("http://www.w3.org/2001/10/xml-exc-c14n#");
-		signature.setSignatureAlgorithm("http://www.w3.org/2001/04/xmldsig-more#rsa-sha256");
+		signature.setCanonicalizationAlgorithm(SignatureConstants.ALGO_ID_C14N_EXCL_OMIT_COMMENTS);
+		signature.setSignatureAlgorithm(SignatureConstants.ALGO_ID_SIGNATURE_RSA_SHA1);
 		
 		return signature;
 	}
@@ -715,11 +708,6 @@ public class DemoApplication {
 		// 인증서를 담은 개인키 서명
 		signature.setSigningCredential(credential);
 
-		// 서명에 정규화방법, 서명 알고리즘 추가
-		signature.setCanonicalizationAlgorithm(SignatureConstants.ALGO_ID_C14N_EXCL_OMIT_COMMENTS);
-		signature.setSignatureAlgorithm(SignatureConstants.ALGO_ID_SIGNATURE_RSA_SHA256);
-
-
 		// X.509 데이터 생성
 		X509DataBuilder x509DataBuilder = (X509DataBuilder) builderFactory.getBuilder(X509Data.DEFAULT_ELEMENT_NAME);
 		X509Data x509Data = x509DataBuilder.buildObject();
@@ -729,8 +717,8 @@ public class DemoApplication {
 		X509Certificate x509Certificate = x509CertificateBuilder.buildObject();
 		try {
 			BasicX509Credential certifi = pem.getX509CredentialForResponse();
-			x509Certificate.setValue(Base64.encodeBytes(certifi.getEntityCertificate().getEncoded(),Base64.DONT_BREAK_LINES));
-			// x509Certificate.setValue(Base64.encodeBytes(certifi.getEntityCertificate().getEncoded()));
+			// x509Certificate.setValue(Base64.encodeBytes(certifi.getEntityCertificate().getEncoded(),Base64.DONT_BREAK_LINES));
+			x509Certificate.setValue(Base64.encodeBytes(certifi.getEntityCertificate().getEncoded()));
 			// System.out.println("BasicX509 ParsedCertificate================\n"+java.util.Base64.getEncoder().encodeToString(certifi.getEntityCertificate().getEncoded()));
 		} catch (CertificateEncodingException e) {
 			// TODO Auto-generated catch block
@@ -746,8 +734,8 @@ public class DemoApplication {
 		signature.setKeyInfo(keyInfo);
 
 		//서명에 정규화방법, 서명 알고리즘 추가
-		signature.setCanonicalizationAlgorithm("http://www.w3.org/2001/10/xml-exc-c14n#");
-		signature.setSignatureAlgorithm("http://www.w3.org/2001/04/xmldsig-more#rsa-sha256");
+		signature.setCanonicalizationAlgorithm(SignatureConstants.ALGO_ID_C14N_EXCL_OMIT_COMMENTS);
+		signature.setSignatureAlgorithm(SignatureConstants.ALGO_ID_SIGNATURE_RSA_SHA1);
 
 		// assertion.setSignature(signature);
 		// Configuration.getMarshallerFactory().getMarshaller(assertion).marshall(assertion);
@@ -763,4 +751,5 @@ public class DemoApplication {
 		byte[] digestBytes = sha256Digest.digest(data.getBytes("UTF-8"));
 		return org.apache.commons.codec.binary.Base64.encodeBase64String(digestBytes);
 	}
+
 }
