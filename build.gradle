@@ -22,7 +22,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.2.2'
 	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
 	// implementation 'org.springframework.boot:spring-boot-devtools'
-	// implementation 'org.springframework.security:spring-security-core:6.2.1'
+	implementation 'org.springframework.security:spring-security-core:6.2.1'
 	implementation 'org.opensaml:opensaml:2.6.4'
 	// implementation 'org.opensaml:opensaml-saml-api:4.0.1'
 	implementation 'org.springframework.security.extensions:spring-security-saml2-core:1.0.10.RELEASE'

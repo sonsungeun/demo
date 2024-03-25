@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<script type="text/javascript">
-    var win;
-    function create(){
-    win = open('','w','width=300,height=200');
-    }
-</script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +6,7 @@
     <title>SAML RESPONSE</title>
 </head>
 <body onload="document.forms[0].submit()">
-    <form method="post" th:action="@{${ACSUrl}}"  target="w" onsubmit="create()">
+    <form method="post" th:action="@{${ACSUrl}}" >
         <input type="hidden" name="SAMLResponse" th:value="${SAMLResponse}">
         <input type="hidden" name="RelayState" th:value="${RelayState}">
     </form>

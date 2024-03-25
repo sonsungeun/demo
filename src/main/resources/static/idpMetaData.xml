@@ -1,51 +1,23 @@
 <?xml version="1.0"?>
-<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" validUntil="2026-02-04T07:28:52Z" cacheDuration="PT1707463732S" entityID="https://saml.sogang.ac.kr:8443">
+<md:EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
+xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+  entityID="https://saml.sogang.ac.kr">
   <md:IDPSSODescriptor WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
     <md:KeyDescriptor use="signing">
-      <md:KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
-        <md:X509Data>
-          <X509Certificate> MIIDZzCCAk+gAwIBAgIJAO2dH1KbTAp/MA0GCSqGSIb3DQEBCwUAMEoxCzAJBgNV
-            BAYTAktSMQ4wDAYDVQQIDAVTRU9VTDEPMA0GA1UECgwGU09HQU5HMRowGAYDVQQD
-            DBFzYW1sLnNvZ2FuZy5hYy5rcjAeFw0yNDAzMDQwMjE1MDJaFw0yNTAzMDQwMjE1
-            MDJaMEoxCzAJBgNVBAYTAktSMQ4wDAYDVQQIDAVTRU9VTDEPMA0GA1UECgwGU09H
-            QU5HMRowGAYDVQQDDBFzYW1sLnNvZ2FuZy5hYy5rcjCCASIwDQYJKoZIhvcNAQEB
-            BQADggEPADCCAQoCggEBAMmmdbTAd9WeMqZlGKn46/cu8F/IWgxsC0VHGguDPzaT
-            eV/ElCprBY+uCsZP8G6tI/WY22xaT3YlNygRo4gHojQRRoDBgoKNqGaUalLfu6Pa
-            kTgpSyHe+EUYhTEkioqC7UlSNNmDJ/2+rjeee9sz6+fxv6eMCj1h1ELPjUxPSoNo
-            6k0ir/6FOelEAikaVOMNcXN6OnFFQTCDvuGxLznb2bGoAf9D+JLTmI+mqG3TDBzt
-            YenlPAQj+eQE2hbsVIx1qQKgqkGWqMvLgqNMfJ/p+YOwPNu2XnqxPjTufQG3vJEZ
-            sPgLKKps0USYerTDUGNjBkHQf56BVufDKssVzh1SerECAwEAAaNQME4wHQYDVR0O
-            BBYEFLRaozAn/fa/MrRCDRzgqK1de60YMB8GA1UdIwQYMBaAFLRaozAn/fa/MrRC
-            DRzgqK1de60YMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAB5qxOE1
-            i3imyAVG+axNnORYhLGOTvI6z+YKjzvM2sN3hqWWw2lhm7lAVIfw8yRq+8HEmPqJ
-            InBgfuvIInHDlybW8mb0Z6J1glQ4fTG7BVJJUfBV3rYmj2ndcPY+qemEm+OmntgD
-            UjrTb3K8BJRpp+2mp/qR+O4z5Z5iqur7TAlqrnpf1Xm87gDzuafF3RNbrcrnOov3
-            v26z/mp3FN5TmpSiyUMLZ0/RdVV7jxkSkcIMkzqvZ+7QqWAYfoljXmk7S4PlSKkz
-            7FfUuNmoPIL+rbUXzvTgJZ3atyX7oEKU+a3NPbjJKa5rC7T7xnV/pLFs6W35csk6
-            Ju/JoI8135we6Zw= </X509Certificate>
-        </md:X509Data>
-      </md:KeyInfo>
-      <!-- <md:EncryptionMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /> -->
-      <md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
-      <md:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+      <ds:KeyInfo>
+        <ds:X509Data>
+          <ds:X509Certificate>MIIDNzCCAh+gAwIBAgIJAI2ezHfOwOW/MA0GCSqGSIb3DQEBCwUAMEoxCzAJBgNVBAYTAktSMQ4wDAYDVQQIDAVTZW91bDEPMA0GA1UECgwGc29nYW5nMRowGAYDVQQDDBFzYW1sLnNvZ2FuZy5hYy5rcjAeFw0yNDAzMTUwNzM4MTZaFw0yNTAzMTUwNzM4MTZaMEoxCzAJBgNVBAYTAktSMQ4wDAYDVQQIDAVzZW91bDEPMA0GA1UECgwGc29nYW5nMRowGAYDVQQDDBFzYW1sLnNvZ2FuZy5hYy5rcjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANHGRBiZggkcodwtkkOVj952dxQYEqP9GJWqw9FUiz4Rnr8NTAdoq7mVuMaudMjW6yxQJAwWv+2zXA7NtoZfdoY2CBpnCsFPxad/BbN/OthcDmV79BeDekLZLjgTMOUW26hfPm6LVTxTL8FRc9juYeeMNP7nHo5yHTQ+RCk8wOKTZHGmydMJbTite4+8Al37cfzSkJ6pzpPE7sqI3UcYmLIaWM1KgCSKWUyUl2b8lW4Poz27Oagbzu99j2C2QRtFdlWG8lNlJ1fF3b55SkeKBm3hvsw+oZB+nM6PhAS3z9v+/Az+NC5bmPk/TncsvA8vstY28VRZ/nlWlP2PLjnkwaUCAwEAAaMgMB4wHAYDVR0RBBUwE4IRc2FtbC5zb2dhbmcuYWMua3IwDQYJKoZIhvcNAQELBQADggEBAHwK1VxO86UdWIbna48UioVg8lqj1BRi+A6Mn3OAxpt0Jb4a0uqaclnLDhhHgb0NPsywRPvII0AZ3mN32E9PRF0UBueBlfAC4dg1nYG62cDWQSiV1b1DZ2Fa7mR3BeM06kLlaeO8D6+Fr60zsyfk3L770gqM46vzkC6qdf73m2JspZPz2p1aEEXYMk00Pbh94rxpZ6eNKTqRmUP89zmey9oQcF2yUdxRdl/x0JMgZiwnZ28UrNno5xWwF4GaHjZoVyedWk51hTCeYVN3NV8OPJzjrdD2bfI5bPruMY9BvJ9xDsvKVyeYYokcwoCwPDgb5Oy/7MniMLpRxGAm6p8edNo=</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
     </md:KeyDescriptor>
-    <!-- <md:KeyDescriptor use="encryption">
-      <md:KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
-        <md:X509Data>
-          <X509Certificate>MIIC0jCCAjugAwIBAgIJAOCltd5EVIOxMA0GCSqGSIb3DQEBCwUAMIGBMQswCQYDVQQGEwJLUjEOMAwGA1UECAwFU0VPVUwxEzARBgNVBAcMClVOSVZFUlNJVFkxDzANBgNVBAoMBlNPR0FORzELMAkGA1UECwwCSVQxDTALBgNVBAMMBFRFU1QxIDAeBgkqhkiG9w0BCQEWEVRFU1RAU09HQU5HLkFDLktSMB4XDTI0MDIyMjA1NTQxNFoXDTI1MDIyMTA1NTQxNFowgYExCzAJBgNVBAYTAktSMQ4wDAYDVQQIDAVTRU9VTDETMBEGA1UEBwwKVU5JVkVSU0lUWTEPMA0GA1UECgwGU09HQU5HMQswCQYDVQQLDAJJVDENMAsGA1UEAwwEVEVTVDEgMB4GCSqGSIb3DQEJARYRVEVTVEBTT0dBTkcuQUMuS1IwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANqXLBcbOSvIpWJ8YkSXCiKvt8W/0Jes+47K99KL09fMdA36TDuRdFpY0rVqrzjlFbUl0BSaOD+B9qSynTL8AL3n69gkDWMgSE444pralPSoSZ3YVO8IyNiJlBoPRDYSsJbxh1Gy9/hhxt9Q5botHfwQ74BIlIusUxo4QRumdfh9AgMBAAGjUDBOMB0GA1UdDgQWBBSMR0cTHOEnjfk23bTopz7Je+6RXjAfBgNVHSMEGDAWgBSMR0cTHOEnjfk23bTopz7Je+6RXjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJhCBMnMnig74M/74ufoHG+x2v+XizIJPPLoJMmkIsEbaiP8GRJ2Uc7eR1+girlWrH+hh5o+olt3MymQQzlg3uSVuxCiHq3Pb6dDfV2Oo4lyVU5+/2zJaXYicqyKOq7NQI5p7lDS4o78JzwDWQjCw0zdaWpIofbR3VBGEwcl8PAp</X509Certificate>
-        </md:X509Data>
-      </md:KeyInfo>
-      <md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc">
-        <xenc:KeySize xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">128</xenc:KeySize>
-      </md:EncryptionMethod>
-    </md:KeyDescriptor> -->
     <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</md:NameIDFormat>
     <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
     <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat>
     <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</md:NameIDFormat>
     <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:kerberos</md:NameIDFormat>
-    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.sogang.ac.kr:8443/ssl/getSamlRedirect111"/>
-    <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.sogang.ac.kr:8443/sso/getSamlRedirect"/>
-    <!-- <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://saml.sogang.ac.kr:8443/sso/getSamlRedirect"/> -->
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+      Location="https://saml.sogang.ac.kr/ssl/getSslRedirect" /> 
+    <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+      Location="https://saml.sogang.ac.kr/sso/getSamlRedirect" />
   </md:IDPSSODescriptor>
 </md:EntityDescriptor>
